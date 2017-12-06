@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!--引入基础配置-->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <!--自定义参数-->
+    <property name="log.path" value="/export/Logs/RM/"/>
+
+    <!--全量日志文件-->
+    <appender name="info_appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${log.path}/risk-info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/risk-info.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!--ERROR级日志文件-->
+    <appender name="error_appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${log.path}/risk-error.log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/risk-error.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="info_appender"/>
+        <appender-ref ref="error_appender"/>
+    </root>
+
+</configuration>

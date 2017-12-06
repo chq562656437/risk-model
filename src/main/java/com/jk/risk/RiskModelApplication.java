@@ -1,0 +1,1 @@
+package com.jk.risk;import org.springframework.boot.SpringApplication;import org.springframework.boot.autoconfigure.SpringBootApplication;/** * 启动类 * User: allen * Date: 2017/11/30 上午11:20 */@SpringBootApplicationpublic class RiskModelApplication {    public static void main(String[] args) {        SpringApplication.run(RiskModelApplication.class, args);    }}

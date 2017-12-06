@@ -1,0 +1,1 @@
+package com.jk.risk.util;import java.time.ZoneOffset;/** * 时间工具 * User: allen * Date: 2017/11/27 下午10:30 */public class TimeUtil {    public static final ZoneOffset DEFAULT_TIMEZONE = ZoneOffset.ofHours(8);    public static void main(String[] args) {    }}
