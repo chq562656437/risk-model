@@ -1,1 +1,0 @@
-package com.jk.risk.common.domain.enumeration;/** * User by allen * Date 2017/11/9. * 服务费承担方 */public enum ServiceFeeOwner {    TENANT, //租户    AGENT; //中介}

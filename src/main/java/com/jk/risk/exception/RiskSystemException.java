@@ -14,6 +14,11 @@ public class RiskSystemException extends RuntimeException {
         this.err = err;
     }
 
+    public RiskSystemException( String message) {
+        super(ErrorEnum.InternalSystemError.name() + ":" + message);
+        this.err = ErrorEnum.InternalSystemError;
+    }
+
     public RiskSystemException(ErrorEnum err, Throwable throwable) {
         super(err.name() + ":" + Throwables.getRootCause(throwable).getMessage(), throwable);
         this.err = err;

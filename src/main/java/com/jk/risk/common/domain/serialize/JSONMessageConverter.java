@@ -4,9 +4,9 @@ import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.google.common.io.ByteStreams;
 import com.google.common.net.HttpHeaders;
-import com.rm.util.JSONUtil;
-import com.rm.util.exception.ErrorEnum;
-import com.rm.util.exception.RMSystemException;
+import com.jk.risk.exception.ErrorEnum;
+import com.jk.risk.exception.RiskSystemException;
+import com.jk.risk.util.JSONUtil;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -72,7 +72,7 @@ public class JSONMessageConverter implements GenericHttpMessageConverter<Object>
                 throw new Exception("Only accept JSON format request body.");
             }
         } catch (Exception e) {
-            throw new RMSystemException(ErrorEnum.MalformedJson, e);
+            throw new RiskSystemException(ErrorEnum.MalformedJson, e);
         }
         return obj;
     }
@@ -93,7 +93,7 @@ public class JSONMessageConverter implements GenericHttpMessageConverter<Object>
             os.write(json);
             os.flush();
         } catch (IOException ioe) {
-            throw new RMSystemException(ErrorEnum.ConnectionLoss, ioe);
+            throw new RiskSystemException(ErrorEnum.ConnectionLoss, ioe);
         }
     }
 }
